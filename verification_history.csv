@@ -1,0 +1,7 @@
+Company,Email,Website,Result,Trust Score,Username,Prediction
+google,jobs@google.com,google.com,✅ Genuine Job,100,,
+udhayasudar,sudarmathi9c19pioneer@gmail.com,udhaya.com,⚠️ Suspicious Job,40,,
+microsoft,hr@microsoft.com,https://www.microsoft.com,✅ Genuine Job,100,,
+Microsoft,sudarmathi9c19pioneer@gmail.com,udhaya.com,,20,udhayasudar,❌ Fake Job
+Microsoft,sudarmathi9c19pioneer@gmail.com,udhaya.com,,20,udhayasudar,❌ Fake Job
+Microsoft,sudarmathi9c19pioneer@gmail.com,udhaya.com,,60,udhayasudar,✅ Real Job

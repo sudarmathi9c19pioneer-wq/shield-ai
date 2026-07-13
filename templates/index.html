@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shield AI - Fake Job Detector</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top-bar">
+
+        <div>
+            <h1>🛡️ Shield AI</h1>
+            <p class="subtitle">
+                AI Powered Fake Job Detection & Company Verification
+            </p>
+        </div>
+
+        <a href="/logout" class="logout-btn">
+            Logout
+        </a>
+
+    </div>
+
+    <hr>
+
+    <h2>
+        Welcome, {{ username }} 👋
+    </h2>
+
+    <div class="dashboard-cards">
+
+        <div class="card">
+            <h3>🤖 AI Detection</h3>
+            <p>Machine Learning Enabled</p>
+        </div>
+
+        <div class="card">
+            <h3>🏢 Company Check</h3>
+            <p>Official Company Verification</p>
+        </div>
+
+        <div class="card">
+            <h3>🌐 Website Scan</h3>
+            <p>Secure Domain Validation</p>
+        </div>
+
+        <div class="card">
+            <h3>📧 Email Check</h3>
+            <p>Official Email Verification</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <form method="POST" action="/dashboard">
+
+        <label>🏢 Company Name</label>
+
+        <input
+            type="text"
+            name="company"
+            placeholder="Example: Zoho"
+            required>
+
+        <label>📧 Company Email</label>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Example: hr@zoho.com"
+            required>
+
+        <label>🌐 Company Website</label>
+
+        <input
+            type="text"
+            name="website"
+            placeholder="https://company.com"
+            required>
+            <label>📄 Job Description</label>
+
+        <textarea
+            name="job_offer"
+            placeholder="Paste the complete job offer here..."
+            rows="10"
+            required></textarea>
+
+        <button type="submit">
+            🔍 Verify Job Offer
+        </button>
+
+    </form>
+
+    {% if ai_result %}
+
+    <div class="result">
+
+        <h2>🛡️ Verification Report</h2>
+
+        <div class="dashboard-cards">
+
+            <div class="card">
+                <h3>🤖 AI Prediction</h3>
+                <p>{{ ai_result }}</p>
+            </div>
+
+            <div class="card">
+                <h3>🏢 Company Status</h3>
+                <p>{{ result }}</p>
+            </div>
+
+            <div class="card">
+                <h3>📋 Analysis</h3>
+                <p>{{ reason }}</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Trust Score</h3>
+                <h2>{{ trust_score }}%</h2>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <h2>🚨 Final Recommendation</h2>
+        {% if trust_score|int >= 80 %}
+
+            <div class="safe-box">
+
+                <h3>✅ Low Risk</h3>
+
+                <p>
+                    This job appears to be genuine based on AI prediction,
+                    company verification and security checks.
+                </p>
+
+            </div>
+
+        {% elif trust_score|int >= 50 %}
+
+            <div class="warning-box">
+
+                <h3>⚠ Medium Risk</h3>
+
+                <p>
+                    Some suspicious indicators were found.
+                    Verify the company before applying.
+                </p>
+
+            </div>
+
+        {% else %}
+
+            <div class="danger-box">
+
+                <h3>❌ High Risk</h3>
+
+                <p>
+                    This job is highly suspicious.
+                    Never pay registration fees or share personal documents.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+    <footer>
+
+        <hr>
+
+        <p>
+            🛡️ Shield AI | AI Powered Fake Job Detection System
+        </p>
+
+        <p>
+            Developed for Ideathon 2026
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
